@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>GO AMIS Admin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <link rel="stylesheet" title="default" href="lib/amis/sdk/sdk.css"/>
+    <link rel="stylesheet" href="lib/amis/sdk/helper.css"/>
+    <script src="lib/amis/sdk/sdk.js"></script>
+    <style>
+        html,
+        body,
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="app-wrapper"></div>
+<script>
+    (function () {
+        let amis = amisRequire('amis/embed');
+
+        const app = {
+            type: 'app',
+            brandName: 'Admin',
+            logo: 'resources/logo.png',
+            header: {
+                type: 'tpl',
+                inline: false,
+                className: 'w-full',
+                tpl:
+                    '<div class="flex justify-between"><div>Top Left Area</div><div>Top Right Area</div></div>'
+            },
+            footer: '<div class="p-2 text-center bg-light">Footer Area</div>',
+            asideBefore: '<div class="p-2 text-center">Aside Before Area</div>',
+            asideAfter: '<div class="p-2 text-center">Aside After Area</div>',
+            api: '/pages/site.json'
+        };
+
+        let amisScoped = amis.embed(
+            '#root',
+            app,
+            {},
+            {
+                theme: 'default'
+            }
+        );
+    })();
+</script>
+</body>
+</html>

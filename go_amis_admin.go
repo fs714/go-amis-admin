@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/fs714/go-amis-admin/api"
 	"github.com/fs714/go-amis-admin/utils/config"
 	"github.com/fs714/go-amis-admin/utils/log"
 	"github.com/fs714/go-amis-admin/utils/version"
@@ -63,7 +62,7 @@ func main() {
 	log.Infof("Git Commit on %s", version.GitVersion)
 	log.Infoln(version.GoVersion)
 
-	router := api.InitRouter()
+	router := InitRouter()
 
 	log.Infof("Listening on %s:%s", config.Conf.ServerConf.HttpIp, config.Conf.ServerConf.HttpPort)
 	s := &http.Server{

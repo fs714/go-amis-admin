@@ -1,10 +1,11 @@
-package api
+package main
 
 import (
 	"github.com/fs714/go-amis-admin/api/v1"
 	"github.com/fs714/go-amis-admin/utils/config"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func InitRouter() *gin.Engine {
@@ -16,6 +17,12 @@ func InitRouter() *gin.Engine {
 	}))
 	r.Use(gin.Recovery())
 	r.Use(cors.Default())
+
+
+	r.StaticFS("/dashboard", assetFS())
+	r.GET("/", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "dashboard/")
+	})
 
 	apiv1 := r.Group("/api/v1")
 

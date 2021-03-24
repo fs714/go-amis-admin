@@ -31,4 +31,5 @@ __pycache__/
 
 # Bin
 bin/
+bindata.go
 
